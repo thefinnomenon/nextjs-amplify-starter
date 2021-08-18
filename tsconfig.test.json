@@ -1,0 +1,23 @@
+{
+    "extends": "./tsconfig.json",
+    "compilerOptions": {
+        "outDir": "./out-tsc/spec",
+        "types": ["jest"],
+        "module": "commonjs",
+        "emitDecoratorMetadata": true,
+        "allowJs": true
+    },
+    "include": [
+        "__mocks__/*",
+        "__tests__/*",
+        "**/*.test.js",
+        "**/*.test.ts",
+        "**/*.test.tsx",
+        "**/*.spec.js",
+        "**/*.spec.ts",
+        "**/*.spec.tsx",
+    ],
+    "exclude": [
+        "cypress/*"
+    ]
+}

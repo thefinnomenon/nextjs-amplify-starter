@@ -12,8 +12,15 @@
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "jsx": "preserve"
+    "jsx": "preserve",
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
-  "exclude": ["node_modules"]
+  "include": ["next-env.d.ts", "**/*.js", "**/*.ts", "**/*.tsx"],
+  "exclude": [
+    "node_modules",
+    "__tests__/*",
+    "**/*.test.js",
+    "**/*.test.ts",
+    "**/*.test.tsx",
+    "cypress/*"
+  ]
 }
