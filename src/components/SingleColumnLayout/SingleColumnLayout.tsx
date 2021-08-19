@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 //import Meta from '@/components/Meta';
-//import ScrollToTop from '@/components/ScrollToTop';
+import ScrollToTop from '../ScrollToTop';
 import Header from '../Header';
 
 type Props = {
@@ -16,10 +16,8 @@ export default function SingleColumnLayout({
 }: Props): JSX.Element {
   return (
     <>
-      {/* <ScrollToTop>
-        
-      </ScrollToTop>
-      <Meta {...rest} /> */}
+      <ScrollToTop />
+      {/* <Meta {...rest} /> */}
       <Wrapper>
         <Header />
         <Content>{children}</Content>
@@ -30,12 +28,6 @@ export default function SingleColumnLayout({
 
 const Wrapper = styled.div`
   padding-bottom: 20px;
-`;
-
-const JetPack = styled.img`
-  height: 100%;
-  width: 100%;
-  transform: rotate(30deg);
 `;
 
 const Content = styled.main`
