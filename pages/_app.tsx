@@ -3,6 +3,11 @@ import GlobalStyles from '../src/styles/themeConfig';
 import { ThemeProvider } from 'next-themes';
 import { IntlProvider } from 'react-intl';
 import { useRouter } from 'next/router';
+import { config } from '@fortawesome/fontawesome-svg-core';
+import '@fortawesome/fontawesome-svg-core/styles.css';
+
+// Stop Font Awesome core SVG library from trying to inject styles into head
+config.autoAddCss = false;
 
 // Load locale files
 const locales = {
