@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import Image from 'next/Image';
+import Image from 'next/image';
 import { useState } from 'react';
 import styled from 'styled-components';
 import DarkModeControl from '../DarkModeControl';
