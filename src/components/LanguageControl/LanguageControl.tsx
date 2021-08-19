@@ -2,12 +2,16 @@ import styled from 'styled-components';
 import { useRouter } from 'next/router';
 import { useCookies } from 'react-cookie';
 
-type Props = {} & typeof defaultProps;
+type Props = {
+  size?: number;
+} & typeof defaultProps;
 
-const defaultProps = Object.freeze({});
+const defaultProps = Object.freeze({
+  size: 20,
+});
 const initialState = Object.freeze({});
 
-export default function LanguageControl(props: Props): JSX.Element {
+export default function LanguageControl({ size }: Props): JSX.Element {
   const [cookie, setCookie] = useCookies(['NEXT_LOCALE']);
   const router = useRouter();
   const { locale, locales } = router;
@@ -26,7 +30,7 @@ export default function LanguageControl(props: Props): JSX.Element {
   }
 
   return (
-    <Select onChange={switchLanguage} defaultValue={locale}>
+    <Select onChange={switchLanguage} defaultValue={locale} height={size}>
       {locales.map((lcl) => (
         <option key={lcl} value={lcl}>
           {lcl.toLocaleUpperCase()}
@@ -36,10 +40,8 @@ export default function LanguageControl(props: Props): JSX.Element {
   );
 }
 
-const Select = styled.select`
-  width: 48px;
-  height: 40px;
-  font-size: 16px;
+const Select = styled.select<{ height?: number }>`
+  height: ${({ height }) => `${height}pt`};
   border: none;
 `;
 
