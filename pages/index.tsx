@@ -1,15 +1,14 @@
 import { FormattedMessage } from 'react-intl';
-import Header from '../src/components/Header';
+import SingleColumnLayout from '../src/components/SingleColumnLayout';
 
 export default function Home() {
   return (
     <>
-      <Header />
-      <main>
+      <SingleColumnLayout>
         <h1>
           <FormattedMessage id='greeting' />
         </h1>
-      </main>
+      </SingleColumnLayout>
     </>
   );
 }
