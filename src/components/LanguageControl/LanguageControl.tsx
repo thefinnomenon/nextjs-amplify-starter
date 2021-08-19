@@ -44,6 +44,7 @@ const Select = styled.select<{ height?: number }>`
   height: ${({ height }) => `${height}pt`};
   border: none;
   background: transparent;
+  font-weight: bold;
 
   &:hover {
     cursor: pointer;

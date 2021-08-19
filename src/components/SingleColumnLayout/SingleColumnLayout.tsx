@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-//import Meta from '@/components/Meta';
+import Meta from '../Meta';
 import ScrollToTop from '../ScrollToTop';
 import Header from '../Header';
 
@@ -16,8 +16,8 @@ export default function SingleColumnLayout({
 }: Props): JSX.Element {
   return (
     <>
+      <Meta {...rest} />
       <ScrollToTop />
-      {/* <Meta {...rest} /> */}
       <Wrapper>
         <Header />
         <Content>{children}</Content>

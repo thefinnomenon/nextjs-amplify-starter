@@ -1,3 +1,9 @@
 {
-    "greeting": "Oi!"
+    "greeting": "Oi!",
+    "site_title": "Iniciador de Nextjs Amplify",
+    "site_description": "Um model inicial para um site de Nextjs Amplify.",
+    "default_og_image_alt": "Imagem padrão do site",
+    "one": "Um",
+    "two": "Dois",
+    "three": "Três"
 }

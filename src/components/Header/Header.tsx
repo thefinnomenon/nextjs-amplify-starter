@@ -2,6 +2,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { useState } from 'react';
 import styled from 'styled-components';
+import { FormattedMessage } from 'react-intl';
 import DarkModeControl from '../DarkModeControl';
 import LanguageControl from '../LanguageControl';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -16,9 +17,9 @@ const initialState = Object.freeze({
 });
 
 const navItems = [
-  { title: 'One', href: '/one' },
-  { title: 'Two', href: '/two' },
-  { title: 'Three', href: '/three' },
+  { title: 'one', href: '/one' },
+  { title: 'two', href: '/two' },
+  { title: 'three', href: '/three' },
 ];
 
 export default function Header(props: Props): JSX.Element {
@@ -47,7 +48,9 @@ export default function Header(props: Props): JSX.Element {
       <NavItems>
         {navItems.map(({ title, href }) => (
           <Link key={title} href={href} passHref>
-            <NavItem>{title}</NavItem>
+            <NavItem>
+              <FormattedMessage id={title} />
+            </NavItem>
           </Link>
         ))}
       </NavItems>
