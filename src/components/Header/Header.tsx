@@ -3,11 +3,11 @@ import Image from 'next/image';
 import { useState } from 'react';
 import styled from 'styled-components';
 import { FormattedMessage } from 'react-intl';
-import DarkModeControl from '../DarkModeControl';
-import LanguageControl from '../LanguageControl';
+import DarkModeControl from '@/components/DarkModeControl';
+import LanguageControl from '@/components/LanguageControl';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHamburger } from '@fortawesome/free-solid-svg-icons';
-import NavOverlay from '../NavOverlay';
+import NavOverlay from '@/components/NavOverlay';
 
 type Props = {} & typeof defaultProps;
 

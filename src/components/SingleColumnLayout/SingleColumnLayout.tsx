@@ -1,7 +1,7 @@
 import styled from 'styled-components';
-import Meta from '../Meta';
-import ScrollToTop from '../ScrollToTop';
-import Header from '../Header';
+import Meta from '@/components/Meta';
+import ScrollToTop from '@/components/ScrollToTop';
+import Header from '@/components/Header';
 
 type Props = {
   children: React.ReactNode;

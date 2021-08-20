@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import Link from 'next/link';
-import DarkModeControl from '../DarkModeControl';
-import LanguageControl from '../LanguageControl';
+import DarkModeControl from '@/components/DarkModeControl';
+import LanguageControl from '@/components/LanguageControl';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
 

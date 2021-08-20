@@ -13,14 +13,29 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "preserve",
+    "baseUrl": ".",
+    "paths": {
+      "@/public/*": ["public/*"],
+      "@/images/*": ["public/images/*"],
+      "@/locales/*": ["locales/*"],
+      "@/tests/*": ["src/__tests__/*"],
+      "@/mocks/*": ["src/__mocks__/*"],
+      "@/api/*": ["src/api/*"],
+      "@/components/*": ["src/components/*"],
+      "@/cypress/*": ["src/cypress/*"],
+      "@/pages/*": ["src/pages/*"],
+      "@/stories/*": ["src/stories/*"],
+      "@/styles/*": ["src/styles/*"],
+      "@/utilities/*": ["src/utilities/*"],
+    }
   },
-  "include": ["next-env.d.ts", "**/*.js", "**/*.ts", "**/*.tsx"],
+  "include": ["next-env.d.ts", "**/*.js", "**/*.ts", "**/*.tsx", "src/utilities/test-utils.jsx"],
   "exclude": [
     "node_modules",
-    "__tests__/*",
+    "src/__tests__/*",
     "**/*.test.js",
     "**/*.test.ts",
     "**/*.test.tsx",
-    "cypress/*"
+    "src/cypress/*"
   ]
 }

@@ -1,5 +1,5 @@
 import type { AppProps } from 'next/app';
-import GlobalStyles from '../src/styles/themeConfig';
+import GlobalStyles from '@/styles/themeConfig';
 import { ThemeProvider } from 'next-themes';
 import { IntlProvider } from 'react-intl';
 import { useRouter } from 'next/router';
@@ -11,15 +11,16 @@ config.autoAddCss = false;
 
 // Load locale files
 const locales = {
-  en: require('../locales/en.json'),
-  pt: require('../locales/pt.json'),
+  en: require('@/locales/en.json'),
+  pt: require('@/locales/pt.json'),
 };
+
+export type Locale = keyof typeof locales;
 
 export default function MyApp({ Component, pageProps }: AppProps): any {
   const router = useRouter();
   const { locale, defaultLocale } = router;
-  // @ts-ignore
-  const messages = locales[locale];
+  const messages = locales[locale as Locale];
 
   return (
     <ThemeProvider>

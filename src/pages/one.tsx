@@ -1,5 +1,5 @@
 import { FormattedMessage } from 'react-intl';
-import SingleColumnLayout from '../src/components/SingleColumnLayout';
+import SingleColumnLayout from '@/components/SingleColumnLayout';
 
 export default function One() {
   return (
