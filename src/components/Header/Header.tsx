@@ -5,7 +5,6 @@ import styled from 'styled-components';
 import { FormattedMessage } from 'react-intl';
 import DarkModeControl from '@/components/DarkModeControl';
 import LanguageControl from '@/components/LanguageControl';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHamburger } from '@fortawesome/free-solid-svg-icons';
 import NavOverlay from '@/components/NavOverlay';
 import IconButton from '@/components/IconButton';
