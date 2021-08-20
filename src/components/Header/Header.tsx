@@ -60,11 +60,14 @@ export default function Header(props: Props): JSX.Element {
   );
 }
 
-const Wrapper = styled.div`
+const Wrapper = styled.header`
   position: fixed;
   top: 0;
   width: 100%;
+  max-width: 1366px;
   height: 48px;
+  left: 50%;
+  transform: translateX(-50%);
   overflow: hidden;
   background: var(--bg);
 `;

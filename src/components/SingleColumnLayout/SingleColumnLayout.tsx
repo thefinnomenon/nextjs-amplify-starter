@@ -17,8 +17,8 @@ export default function SingleColumnLayout({
   return (
     <>
       <Meta {...rest} />
-      <ScrollToTop />
       <Wrapper>
+        <ScrollToTop />
         <Header />
         <Content>{children}</Content>
       </Wrapper>
@@ -27,6 +27,9 @@ export default function SingleColumnLayout({
 }
 
 const Wrapper = styled.div`
+  width: 100%;
+  max-width: 1366px;
+  margin: 0 auto;
   padding-bottom: 20px;
 `;
 
