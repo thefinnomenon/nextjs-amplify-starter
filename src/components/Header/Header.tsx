@@ -54,7 +54,7 @@ export default function Header(props: Props): JSX.Element {
           </Link>
         ))}
       </NavItems>
-      <NavOverlay isShowing={showOverlay} setIsShowing={setShowOverlay} />
+      <NavOverlay isVisible={showOverlay} setIsVisible={setShowOverlay} />
     </Wrapper>
   );
 }

@@ -1,58 +1,84 @@
 import styled from 'styled-components';
+import { FormattedMessage } from 'react-intl';
+import { motion, AnimatePresence } from 'framer-motion';
+import Portal from '@reach/portal';
 import Link from 'next/link';
 import DarkModeControl from '@/components/DarkModeControl';
 import LanguageControl from '@/components/LanguageControl';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
+import { useEffect } from 'react';
 
 type Props = {
-  isShowing: boolean;
-  setIsShowing(value: boolean): void;
+  isVisible: boolean;
+  setIsVisible(value: boolean): void;
 } & typeof defaultProps;
 
 const defaultProps = Object.freeze({});
 const initialState = Object.freeze({});
 
 const navItems = [
-  { title: 'One', href: '/one' },
-  { title: 'Two', href: '/two' },
-  { title: 'Three', href: '/three' },
+  { title: 'one', href: '/one' },
+  { title: 'two', href: '/two' },
+  { title: 'three', href: '/three' },
 ];
 
 export default function NavOverlay({
-  isShowing,
-  setIsShowing,
+  isVisible,
+  setIsVisible,
 }: Props): JSX.Element {
   const handleClose = () => {
-    setIsShowing(false);
+    setIsVisible(false);
   };
 
-  if (!isShowing) {
-    return <></>;
-  }
+  useEffect(() => {
+    document.addEventListener('keydown', handleClose, false);
+    return function cleanup() {
+      document.removeEventListener('keydown', handleClose, false);
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
-    <Wrapper>
-      <CloseMenuIcon icon={faTimes} size='lg' onClick={() => handleClose()} />
-      <NavItems>
-        {navItems.map(({ title, href }) => (
-          <Link key={title} href={href} passHref>
-            <NavItem>{title}</NavItem>
-          </Link>
-        ))}
-      </NavItems>
-      <Controls>
-        <DarkModeControl size={32} />
-        <LanguageControl size={32} />
-      </Controls>
-    </Wrapper>
+    <Portal>
+      <AnimatePresence>
+        {isVisible && (
+          <Wrapper
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+          >
+            <CloseMenuIcon
+              icon={faTimes}
+              size='lg'
+              onClick={() => handleClose()}
+            />
+            <NavItems>
+              {navItems.map(({ title, href }) => (
+                <Link key={title} href={href} passHref>
+                  <NavItem>
+                    <FormattedMessage id={title} />
+                  </NavItem>
+                </Link>
+              ))}
+            </NavItems>
+            <Controls>
+              <DarkModeControl size={32} />
+              <LanguageControl size={32} />
+            </Controls>
+          </Wrapper>
+        )}
+      </AnimatePresence>
+    </Portal>
   );
 }
 
-const Wrapper = styled.div`
-  position: absolute;
-  width: 100%;
-  height: 100%;
+const Wrapper = styled(motion.div)`
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
   backdrop-filter: blur(4px) contrast(60%) invert(0%);
   font-size: 1.5rem;
 `;

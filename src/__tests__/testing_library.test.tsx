@@ -3,6 +3,7 @@
  */
 
 import React from 'react';
+// @ts-ignore
 import { render } from '@/utilities/test-utils';
 import Index from '../pages/index';
 
