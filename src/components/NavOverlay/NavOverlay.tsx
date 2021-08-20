@@ -5,7 +5,7 @@ import Portal from '@reach/portal';
 import Link from 'next/link';
 import DarkModeControl from '@/components/DarkModeControl';
 import LanguageControl from '@/components/LanguageControl';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import IconButton from '@/components/IconButton';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
 import { useEffect } from 'react';
 
@@ -31,10 +31,16 @@ export default function NavOverlay({
     setIsVisible(false);
   };
 
+  const handleKeypress = (e: KeyboardEvent) => {
+    if (e.key === 'Escape') {
+      handleClose();
+    }
+  };
+
   useEffect(() => {
-    document.addEventListener('keydown', handleClose, false);
+    document.addEventListener('keydown', handleKeypress, false);
     return function cleanup() {
-      document.removeEventListener('keydown', handleClose, false);
+      document.removeEventListener('keydown', handleKeypress, false);
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -48,9 +54,10 @@ export default function NavOverlay({
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
           >
-            <CloseMenuIcon
+            <CloseOverlayButton
               icon={faTimes}
               size='lg'
+              altText='Close Menu'
               onClick={() => handleClose()}
             />
             <NavItems>
@@ -83,7 +90,7 @@ const Wrapper = styled(motion.div)`
   font-size: 1.5rem;
 `;
 
-const CloseMenuIcon = styled(FontAwesomeIcon)`
+const CloseOverlayButton = styled(IconButton)`
   float: right;
   margin-top: 24px;
   margin-right: 24px;

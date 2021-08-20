@@ -8,6 +8,7 @@ import LanguageControl from '@/components/LanguageControl';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHamburger } from '@fortawesome/free-solid-svg-icons';
 import NavOverlay from '@/components/NavOverlay';
+import IconButton from '@/components/IconButton';
 
 type Props = {} & typeof defaultProps;
 
@@ -43,6 +44,7 @@ export default function Header(props: Props): JSX.Element {
       <HamburgerMenu
         icon={faHamburger}
         size='lg'
+        altText='Open Menu'
         onClick={() => handleOpenOverlay()}
       />
       <NavItems>
@@ -78,7 +80,7 @@ const LogoLink = styled.a`
 
 const Logo = styled(Image)``;
 
-const HamburgerMenu = styled(FontAwesomeIcon)`
+const HamburgerMenu = styled(IconButton)`
   display: none;
   float: right;
   height: 100%;
