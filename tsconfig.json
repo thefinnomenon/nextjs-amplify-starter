@@ -24,6 +24,7 @@
       "@/components/*": ["src/components/*"],
       "@/cypress/*": ["src/cypress/*"],
       "@/pages/*": ["src/pages/*"],
+      "@/services/*": ["src/services/*"],
       "@/stories/*": ["src/stories/*"],
       "@/styles/*": ["src/styles/*"],
       "@/utilities/*": ["src/utilities/*"],

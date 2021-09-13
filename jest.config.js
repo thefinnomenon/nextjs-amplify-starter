@@ -26,6 +26,7 @@ module.exports = {
     '^@/components/(.*)$': '<rootDir>/src/components/$1',
     '^@/cypress/(.*)$': '<rootDir>/src/cypress/$1',
     '^@/pages/(.*)$': '<rootDir>/src/pages/$1',
+    '^@/services/(.*)$': '<rootDir>/src/services/$1',
     '^@/stories/(.*)$': '<rootDir>/src/stories/$1',
     '^@/styles/(.*)$': '<rootDir>/src/styles/$1',
     '^@/utilities/(.*)$': '<rootDir>/src/utilities/$1',
