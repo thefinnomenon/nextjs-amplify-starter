@@ -1,0 +1,19 @@
+# schemaPath isn't working for me so run codegen from backend/appsync/.
+# All the paths are relative to backend/appsync/.
+projects:
+  ChatApp:
+    schemaPath: schema.graphql
+    includes:
+      - ../../src/graphql/**/*.ts
+    excludes: []
+    extensions:
+      amplify:
+        codeGenTarget: typescript
+        generatedFileName: ../../src/graphql/appsync.ts
+        docsFilePath: ../../src/graphql/
+        frontend: javascript
+        framework: react
+        maxDepth: 2
+extensions:
+  amplify:
+    version: 3
