@@ -28,6 +28,7 @@
     "@fortawesome/free-solid-svg-icons": "^5.15.4",
     "@fortawesome/react-fontawesome": "^0.1.15",
     "@reach/portal": "^0.16.0",
+    "@sentry/nextjs": "^6.13.2",
     "aws-amplify": "^4.2.9",
     "framer-motion": "^4.1.17",
     "next": "11.1.0",

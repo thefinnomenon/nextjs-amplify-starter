@@ -6,6 +6,14 @@ export default function One() {
     <SingleColumnLayout>
       <h1>
         <FormattedMessage id='greeting' />
+        <button
+          type='button'
+          onClick={() => {
+            throw new Error('Sentry Frontend Error');
+          }}
+        >
+          Throw error
+        </button>
       </h1>
     </SingleColumnLayout>
   );

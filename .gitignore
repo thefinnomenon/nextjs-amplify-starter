@@ -57,3 +57,5 @@ amplifytools.xcconfig
 src/aws-exports.js
 
 .eslintcache
+# Sentry
+.sentryclirc
