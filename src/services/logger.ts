@@ -1,36 +1,42 @@
-import pino from 'pino';
-/* @ts-ignore */
-import cloudwatchStream from 'pino-cloudwatch';
-const { createWriteStream } = require('pino-sentry');
+import {
+  logger,
+  consoleTransport,
+  transportFunctionType,
+} from 'react-native-logs';
+import * as Sentry from '@sentry/nextjs';
 
-const {
-  CLOUDWATCH_NODEJS_LOG_GROUP,
-  AWS_ACCESS_KEY_ID,
-  AWS_SECRET_ACCESS_KEY,
-  AWS_REGION,
-} = process.env;
+const sentryTransport: transportFunctionType = (props) => {
+  if (props.level.text === 'error') {
+    Sentry.captureException(props.msg);
+  }
+};
 
-// export const logger = pino(
-//   {
-//     name: 'mqtt-broker',
-//     level: process.env.LOG_LEVEL || 'info',
-//   },
-//   cloudwatchStream({
-//     group: CLOUDWATCH_NODEJS_LOG_GROUP,
-//     aws_access_key_id: AWS_ACCESS_KEY_ID,
-//     aws_secret_access_key: AWS_SECRET_ACCESS_KEY,
-//     aws_region: AWS_REGION,
-//   }),
-// );
+const developmentConfig = {
+  severity: 'debug',
+  transport: consoleTransport,
+  transportOptions: {
+    color: 'ansi',
+  },
+};
 
-const stream = createWriteStream({
-  dsn: process.env.SENTRY_DSN,
-  messageAttributeKey: 'message',
-  stackAttributeKey: 'trace',
-  extraAttributeKeys: ['req', 'context'],
-  maxValueLength: 250,
-});
+const productionConfig = {
+  severity: 'error',
+  transport: sentryTransport,
+};
 
-const logger = pino({}, stream);
+let config = developmentConfig;
+if (process.env.NODE_ENV === 'production') {
+  /* @ts-ignore */
+  config = productionConfig;
+}
 
-export default logger;
+const LOGGER = logger.createLogger(config);
+
+module.exports = function (namespace: string) {
+  if (!namespace) {
+    return LOGGER;
+  }
+
+  LOGGER.enable(namespace);
+  return LOGGER.extend(namespace);
+};
