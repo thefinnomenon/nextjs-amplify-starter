@@ -33,8 +33,6 @@
     "framer-motion": "^4.1.17",
     "next": "11.1.0",
     "next-themes": "^0.0.15",
-    "pino": "^7.0.0-rc.4",
-    "pino-sentry": "^0.7.0",
     "react": "17.0.2",
     "react-cookie": "^4.1.1",
     "react-dom": "17.0.2",
